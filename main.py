@@ -5,6 +5,7 @@ from typing import Optional
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 def get_phrases(text) -> list[str]:
     """Renvoie une liste du texte contenu dans chaque phrases"""
@@ -54,10 +55,42 @@ def get_vocabulary(training_data: list[tuple[str, str]]) -> list:
         [pair[0] for pair in training_data]
     ))
 
-text_corpus = """Je ne connaîtrai pas la peur car la peur tue l’esprit.
-La peur est la petite mort qui conduit à l’oblitération totale. 
-J’affronterai ma peur. Je lui permettrai de passer sur moi, au travers de moi. Et lorsqu’elle sera passée, je tournerai mon œil intérieur sur son chemin. Et là où elle sera passée, il n’y aura plus rien. Rien que moi."""
-VOCABULARY = get_vocabulary(get_training_samples(text_corpus))
+text_corpus = """Le chat mange une souris.
+Le chien mange de la viande.
+Le chat dort sur le canapé.
+Le chien dort dans le jardin.
+L'oiseau vole dans le ciel.
+L'oiseau chante le matin.
+Le poisson nage dans l'eau.
+L'homme mange une pomme.
+La femme mange une banane.
+L'enfant mange du pain.
+Le chat regarde le chien.
+Le chien regarde le chat.
+La voiture roule sur la route.
+Le bus roule en ville.
+Le vélo roule rapidement.
+Le soleil brille dans le ciel.
+La pluie tombe sur la ville.
+Le vent souffle fort.
+Le professeur enseigne aux élèves.
+L'élève apprend la programmation.
+L'élève écrit du code.
+Le robot exécute un programme.
+Le robot apprend à parler.
+Le programme calcule un résultat.
+Le chien court dans le parc.
+Le chat court après la souris.
+Le poisson mange des algues.
+L'oiseau mange des graines.
+La femme lit un livre.
+L'homme lit un journal.
+L'enfant lit une histoire.
+Le chat est petit.
+Le chien est grand.
+Le poisson est rapide."""
+
+VOCABULARY = get_vocabulary(get_training_samples(text_corpus, window=2))
 print(VOCABULARY)
 
 pairs = get_training_samples(text_corpus)
@@ -94,7 +127,7 @@ class SkipGram(nn.Module):
 X = torch.tensor([VOCABULARY.index(p[0]) for p in pairs])
 Y = torch.tensor([VOCABULARY.index(p[1]) for p in pairs])
 
-model = SkipGram(10)
+model = SkipGram(100)
 
 loss_fn = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
@@ -109,5 +142,19 @@ for epoch in range(1000):
     optimizer.step()
 
     print(loss.item(), end="\r")
-    
+
 print()
+
+def most_similar(word, k=5, vocabulary: Optional[list] = None):
+    if vocabulary is None:
+        vocabulary = VOCABULARY
+
+    idx = vocabulary.index(word)
+    v = model.embeddings.weight[idx]
+
+    sims = F.cosine_similarity(v.unsqueeze(0), model.embeddings.weight)
+
+    best = torch.topk(sims, k+1).indices[1:]
+    return [vocabulary[i] for i in best]
+
+print(most_similar("homme"))
