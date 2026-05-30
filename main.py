@@ -1,6 +1,7 @@
 # https://becominghuman.ai/how-does-word2vecs-skip-gram-work-f92e0525def4
 
 import string
+from typing import Optional
 
 def get_phrases(text) -> list[str]:
     """Renvoie une liste du texte contenu dans chaque phrases"""
@@ -42,4 +43,23 @@ def get_training_samples(text: str, window: int = 1) -> list[tuple[str, str]]:
     
     return result
 
-assert get_training_samples("Ceci est un test.") == [("ceci", "est"), ("est", "ceci"), ("est", "un"), ("un", "est"), ("un", "test"), ("test", "un")]          
+assert get_training_samples("Ceci est un test.") == [("ceci", "est"), ("est", "ceci"), ("est", "un"), ("un", "est"), ("un", "test"), ("test", "un")]
+
+def get_vocabulary(training_data: list[tuple[str, str]]) -> list:
+    """Renvoie la liste des mots mélangés dans les données d'entraînement"""
+    return list(set(
+        [pair[0] for pair in training_data]
+    ))
+
+text_corpus = "Ceci est un test."
+VOCABULARY = get_vocabulary(get_training_samples(text_corpus))
+print(VOCABULARY)
+
+def get_vector(word: str, vocab: Optional[list] = None) -> list:
+    """Retourne un vecteur 1, len(vocab) avec toutes les valeurs nulles sauf celle correspondant au mot donné"""
+    if vocab is None:
+        vocab = VOCABULARY
+
+    return [int(val == word) for val in vocab]
+
+print(get_vector("test"))
