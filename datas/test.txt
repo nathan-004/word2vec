@@ -1,0 +1,181 @@
+Le chat mange une souris.
+Le chien mange de la viande.
+Le chat dort sur le canapé.
+Le chien dort dans le jardin.
+L'oiseau vole dans le ciel.
+L'oiseau chante le matin.
+Le poisson nage dans l'eau.
+L'homme mange une pomme.
+La femme mange une banane.
+L'enfant mange du pain.
+Le chat regarde le chien.
+Le chien regarde le chat.
+La voiture roule sur la route.
+Le bus roule en ville.
+Le vélo roule rapidement.
+Le soleil brille dans le ciel.
+La pluie tombe sur la ville.
+Le vent souffle fort.
+Le professeur enseigne aux élèves.
+L'élève apprend la programmation.
+L'élève écrit du code.
+Le robot exécute un programme.
+Le robot apprend à parler.
+Le programme calcule un résultat.
+Le chien court dans le parc.
+Le chat court après la souris.
+Le poisson mange des algues.
+L'oiseau mange des graines.
+La femme lit un livre.
+L'homme lit un journal.
+L'enfant lit une histoire.
+Le chat est petit.
+Le chien est grand.
+Le poisson est rapide.
+Le chat joue avec la balle.
+Le chien joue dans le jardin.
+L'oiseau construit son nid.
+L'écureuil saute d'arbre en arbre.
+La souris court rapidement.
+Le lapin saute haut.
+Le lion rugit fort.
+L'ours hiberne pendant l'hiver.
+Le renard est rusé.
+Le loup hurle la nuit.
+La baleine nage dans l'océan.
+Le dauphin saute hors de l'eau.
+Le crocodile se cache dans l'eau.
+Le serpent rampe doucement.
+L'araignée tisse sa toile.
+La mouche vole partout.
+L'abeille butine les fleurs.
+Le papillon danse dans le vent.
+L'herbe pousse verte.
+La fleur s'épanouit au printemps.
+L'arbre perd ses feuilles.
+Le fruit mûrit lentement.
+Le légume pousse dans le potager.
+La rose sent bon.
+Le lac est calme.
+La montagne est très haute.
+La forêt est dense.
+La plage est belle.
+La mer est agitée.
+Le ciel est bleu.
+Le nuage flotte doucement.
+L'éclair illumine la nuit.
+Le tonnerre gronde fort.
+L'orage arrive rapidement.
+La neige couvre tout.
+Le brouillard obscurcit la vue.
+L'arc en ciel apparaît après la pluie.
+Le feu brûle chaud.
+La glace est froide.
+L'eau bout rapidement.
+Le glaçon fond lentement.
+La fumée monte haut.
+Le bruit résonne partout.
+Le silence est total.
+La musique joue doucement.
+La chanson résonne magnifiquement.
+Le danseur bouge gracieusement.
+Le chanteur chante juste.
+Le musicien joue de la guitare.
+Le peintre peint un tableau.
+Le dessin est joli.
+La photographie capture un moment.
+Le film raconte une histoire.
+Le livre contient des secrets.
+Le stylo écrit en bleu.
+Le crayon dessine un trait.
+La gomme efface les erreurs.
+La règle mesure la distance.
+L'ordinateur traite l'information.
+La souris clique rapidement.
+Le clavier tape fort.
+L'écran affiche l'image.
+La caméra enregistre la vidéo.
+Le microphone capture le son.
+Les haut parleurs diffusent la musique.
+L'ampli booste le son.
+Le haut parleur vibre fort.
+Le radiateur chauffe la maison.
+La climatisation refroidit l'air.
+Le ventilateur souffle l'air.
+La lampe illumine la pièce.
+La chandelle brûle lentement.
+La torche éclaire le chemin.
+Le chat mange du poisson.
+Le chat mange de la viande.
+Le chat dort toute la journée.
+Le chien mange des os.
+Le chien court très rapidement.
+Le chien joue avec le chat.
+Le chien regarde son maître.
+L'homme mange au restaurant.
+L'homme lit le journal tous les jours.
+L'homme court le matin.
+La femme mange une salade.
+La femme lit un roman.
+La femme court dans le parc.
+L'enfant mange des bonbons.
+L'enfant lit des contes.
+L'enfant joue avec ses amis.
+L'oiseau vole très haut.
+L'oiseau chante toutes les matins.
+L'oiseau mange des insectes.
+Le poisson nage vite.
+Le poisson mange des algues marines.
+Le poisson est petit et rapide.
+Le chat est petit et mignon.
+Le chien est grand et loyal.
+L'homme est grand et fort.
+La femme est grande et élégante.
+L'enfant est petit et curieux.
+Le poisson est petit et agile.
+L'oiseau est petit et gracieux.
+Le chat court après sa queue.
+Le chien court après le bâton.
+L'homme court après le bus.
+La femme court après son chien.
+L'enfant court après le ballon.
+Le chat joue avec la souris.
+Le chien joue avec son jouet.
+L'enfant joue avec ses jeux.
+Le chat regarde les oiseaux.
+Le chien regarde son maître.
+L'homme regarde la télévision.
+La femme regarde le paysage.
+L'enfant regarde le dessin animé.
+Le chat dort sur le lit.
+Le chien dort près du feu.
+L'enfant dort dans son lit.
+Le chat mange lentement.
+Le chien mange rapidement.
+L'homme mange délicieusement.
+La femme mange légèrement.
+L'enfant mange goulûment.
+Le chat est très petit.
+Le chien est très grand.
+L'homme est très intelligent.
+La femme est très belle.
+L'enfant est très intelligent.
+Le poisson est très rapide.
+L'oiseau est très gracieux.
+Le chat et le chien jouent ensemble.
+L'homme et la femme marchent ensemble.
+L'enfant et le chien courent ensemble.
+Le chat aime dormir.
+Le chien aime jouer.
+L'homme aime lire.
+La femme aime danser.
+L'enfant aime manger.
+Le chat aime ses maîtres.
+Le chien aime son maître.
+L'oiseau aime chanter.
+Le poisson aime nager.
+Le chat déteste les souris.
+Le chien déteste les chats.
+L'homme déteste attendre.
+La femme déteste les mensonges.
+L'enfant déteste les légumes.

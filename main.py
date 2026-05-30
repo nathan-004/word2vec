@@ -7,6 +7,26 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+def import_text(filename: str) -> str:
+    with open(filename, "r", encoding="UTF-8") as f:
+        result = f.read()
+    return result
+
+def import_stopwords(filename: str) -> set:
+    with open(filename, "r", encoding="UTF-8") as f:
+        result = f.readlines()
+    return set(map(lambda x: x.strip(), result))
+
+#FR_STOPWORDS = import_stopwords("datas/stopwords/stopwords-fr.txt")
+FR_STOPWORDS = {
+    "le", "la", "les",
+    "un", "une",
+    "de", "du", "des",
+    "et", "à", "en"
+}
+
+text = import_text("datas/test.txt")
+
 def get_phrases(text) -> list[str]:
     """Renvoie une liste du texte contenu dans chaque phrases"""
     start = 0
@@ -47,6 +67,12 @@ def get_training_samples(text: str, window: int = 1) -> list[tuple[str, str]]:
     
     return result
 
+def clean_training_sample(sample: list[tuple[str, str]], stopwords: set) -> list[tuple[str, str]]:
+    """Retire les stopwords des données d'entraînement"""
+    return [
+        pair for pair in sample if not(pair[0] in stopwords) and not(pair[1] in stopwords)
+    ]
+
 assert get_training_samples("Ceci est un test.") == [("ceci", "est"), ("est", "ceci"), ("est", "un"), ("un", "est"), ("un", "test"), ("test", "un")]
 
 def get_vocabulary(training_data: list[tuple[str, str]]) -> list:
@@ -55,45 +81,12 @@ def get_vocabulary(training_data: list[tuple[str, str]]) -> list:
         [pair[0] for pair in training_data]
     ))
 
-text_corpus = """Le chat mange une souris.
-Le chien mange de la viande.
-Le chat dort sur le canapé.
-Le chien dort dans le jardin.
-L'oiseau vole dans le ciel.
-L'oiseau chante le matin.
-Le poisson nage dans l'eau.
-L'homme mange une pomme.
-La femme mange une banane.
-L'enfant mange du pain.
-Le chat regarde le chien.
-Le chien regarde le chat.
-La voiture roule sur la route.
-Le bus roule en ville.
-Le vélo roule rapidement.
-Le soleil brille dans le ciel.
-La pluie tombe sur la ville.
-Le vent souffle fort.
-Le professeur enseigne aux élèves.
-L'élève apprend la programmation.
-L'élève écrit du code.
-Le robot exécute un programme.
-Le robot apprend à parler.
-Le programme calcule un résultat.
-Le chien court dans le parc.
-Le chat court après la souris.
-Le poisson mange des algues.
-L'oiseau mange des graines.
-La femme lit un livre.
-L'homme lit un journal.
-L'enfant lit une histoire.
-Le chat est petit.
-Le chien est grand.
-Le poisson est rapide."""
-
-VOCABULARY = get_vocabulary(get_training_samples(text_corpus, window=2))
+pairs = get_training_samples(text, window=2)
+print(len(pairs))
+pairs = clean_training_sample(pairs, FR_STOPWORDS)
+print(len(pairs))
+VOCABULARY = get_vocabulary(pairs)
 print(VOCABULARY)
-
-pairs = get_training_samples(text_corpus)
 
 def get_vector(word: str, vocab: Optional[list] = None) -> torch.Tensor:
     """Retourne un vecteur 1, len(vocab) avec toutes les valeurs nulles sauf celle correspondant au mot donné"""
@@ -127,12 +120,12 @@ class SkipGram(nn.Module):
 X = torch.tensor([VOCABULARY.index(p[0]) for p in pairs])
 Y = torch.tensor([VOCABULARY.index(p[1]) for p in pairs])
 
-model = SkipGram(100)
+model = SkipGram(50)
 
 loss_fn = nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.0005)
 
-for epoch in range(1000):
+for epoch in range(6000):
     logits = model(X)
 
     loss = loss_fn(logits, Y)
@@ -141,7 +134,7 @@ for epoch in range(1000):
     loss.backward()
     optimizer.step()
 
-    print(loss.item(), end="\r")
+    print(f"Epoch : {epoch} - Loss : {loss.item():0.5}", end="\r")
 
 print()
 
@@ -158,3 +151,4 @@ def most_similar(word, k=5, vocabulary: Optional[list] = None):
     return [vocabulary[i] for i in best]
 
 print(most_similar("homme"))
+print(most_similar("journal"))
